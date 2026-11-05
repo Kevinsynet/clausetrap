@@ -15,3 +15,7 @@
 .document-summary h2{font-size:23px;margin:0 0 9px}
 .document-summary p{max-width:88ch;font-size:15px;line-height:1.65}
 .summary-sources{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-top:12px;font-size:11px;color:#62625c}
+
+.brief-row{display:grid;grid-template-columns:minmax(115px,155px) 1fr;gap:16px;padding:14px 0;border-top:1px solid #d1cfc6}
+.brief-row h3{font-size:15px;letter-spacing:-.02em}.brief-row .summary-sources{margin-top:6px}
+@media(max-width:700px){.brief-row{grid-template-columns:1fr;gap:6px}}
