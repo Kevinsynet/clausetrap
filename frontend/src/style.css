@@ -11,3 +11,7 @@
 .resolution-panel label{display:inline-flex;align-items:center;gap:8px;margin:10px 14px 0 0;padding:8px 10px;border:1px solid;cursor:pointer}
 .resolution-panel input{accent-color:#171717}
 .draft-preview{margin-top:16px;border-left:4px solid #5271ff;padding:12px 16px;background:#edf0ff}
+.document-summary{border-top:2px solid #171717;border-bottom:1px solid #aaa79e;padding:18px 0;margin-bottom:22px}
+.document-summary h2{font-size:23px;margin:0 0 9px}
+.document-summary p{max-width:88ch;font-size:15px;line-height:1.65}
+.summary-sources{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-top:12px;font-size:11px;color:#62625c}
