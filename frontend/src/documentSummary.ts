@@ -81,7 +81,16 @@ export function documentSummary(data:Analysis):SummaryLine[] {
     if(flagged.has(p.clause.id))continue;
     owners.add(owner(p));topics.add(topic(p));chosen.push(p);
   }
-  if(chosen.length)add('Who does what',chosen.map(p=>plain(p.text)).join(' '),chosen);
+  const listed=data.obligations.filter(o=>o.polarity==='listed');
+  if(listed.length){
+    const actors=unique(data.obligations.map(o=>o.actor)).filter(a=>!/^both parties$/i.test(a));
+    const rows=actors.slice(0,3).map(actor=>{
+      const items=data.obligations.filter(o=>o.actor===actor && !flagged.has(o.clause_id)).slice(0,2);
+      const sources=items.map(o=>data.clauses.find(c=>c.id===o.clause_id)!);
+      return {text:items.length?actor+' commitments include: '+items.map(o=>plain(o.source).replace(/[.]$/,'')).join('; ')+'.':'',sources};
+    }).filter(r=>r.text);
+    if(rows.length)result.push({label:'Who does what',text:rows.map(r=>r.text).join(' '),sources:unique(rows.flatMap(r=>r.sources))});
+  }else if(chosen.length)add('Who does what',chosen.map(p=>plain(p.text)).join(' '),chosen);
   const scope=themes.filter(t=>!topics.has(t.name)).slice(0,4);
   if(scope.length&&intro.length)add('Other terms', 'The document also covers '+list(scope.map(v=>v.name))+'.',scope.map(v=>v.p));
   if(data.findings.length){

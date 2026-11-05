@@ -1,3 +1,4 @@
+import {responsibilityHeading,readDuties} from './responsibility';
 import {getDocument, GlobalWorkerOptions} from 'pdfjs-dist';
 import worker from 'pdfjs-dist/build/pdf.worker.min.mjs?url';
 import {resolutionFor} from './resolution.mjs';
@@ -31,18 +32,24 @@ export async function analyzeInBrowser(upload?:File):Promise<Analysis> {
     const obligations:Obligation[]=[];
     const findings:Finding[]=[];
     let size=0;
+    let activeOwner:string|undefined;
+    const owners=new Map<string,string>();
     for(let page=1;page<=pdf.numPages;page++){
       const content=await (await pdf.getPage(page)).getTextContent();
       const lines=content.items.map(item=>'str' in item ? item.str+(item.hasEOL?'\n':' ') : '').join('').split('\n');
       for(const raw of lines){
-        const line=raw.trim();
+        const line=raw.replace(/[\u200b-\u200d\ufeff]/g,'').trim();
         if(!line)continue;
         size+=line.length;
         if(size>300000)throw new Error('Extracted text exceeds 300,000 characters.');
         const heading=line.match(/^(?:Section\s+)?(\d+(?:\.\d+)*)(?:[.)]|\s)\s*(.+)$/);
-        if(heading||!clauses.length){
+        const role=responsibilityHeading(line);
+        if(role)activeOwner=role;
+        if(heading && /^[A-Z][A-Z &/-]{4,}$/.test(heading[2]))activeOwner=undefined;
+        if(heading||role||!clauses.length){
           if(clauses.length>=300)throw new Error('Split PDFs with more than 300 clauses.');
           clauses.push({id:'C'+String(clauses.length+1).padStart(3,'0'),reference:heading?.[1]||'Preamble',text:heading?.[2]||line,pages:[page],category:'other',entities:{}});
+          if(activeOwner && heading)owners.set(clauses[clauses.length-1].id,activeOwner);
         }else{
           const c=clauses[clauses.length-1];c.text+='\n'+line;if(!c.pages.includes(page))c.pages.push(page);
         }
@@ -52,10 +59,14 @@ export async function analyzeInBrowser(upload?:File):Promise<Analysis> {
     for(const c of clauses){
       c.category=categories.find(([,pattern])=>pattern.test(c.text))?.[0]||'other';
       c.entities={parties:[],amounts:c.text.match(moneyPattern)||[],dates:c.text.match(datePattern)||[],durations:c.text.match(durationPattern)||[]};
-      const modal=/\b([A-Z][\w&-]*(?:[ \t]+[A-Z][\w&-]*)*)\s+(?:shall|must|agrees to|is required to)\s+(not\s+)?([a-z]+)\s+([\s\S]+?)(?:[.!?](?=\s|$)|$)/g;
-      for(const m of c.text.matchAll(modal)){
-        if(!c.entities.parties.includes(m[1]))c.entities.parties.push(m[1]);
-        obligations.push({id:'O'+(obligations.length+1),clause_id:c.id,actor:m[1],action:m[3],object:m[4],polarity:m[2]?'prohibited':'required',source:m[0],pages:c.pages,deadline:[...(m[0].match(datePattern)||[]),...(m[0].match(durationPattern)||[])],condition:m[4].match(/\b(?:if|unless|provided that|after|upon|when|subject to)\b[\s\S]*/i)?.[0]||''});
+      const owner=owners.get(c.id);
+      const lines=c.text.split('\n');
+      const body=!owner && lines.length>1 && lines[0].length<75 && !/\b(?:must|shall|agrees?)\b/i.test(lines[0]) ? lines.slice(1).join('\n') : c.text;
+      for(const d of readDuties(body,owner)){
+        if(!c.entities.parties.includes(d.actor))c.entities.parties.push(d.actor);
+        obligations.push({...d,id:'O'+(obligations.length+1),clause_id:c.id,pages:c.pages,
+          deadline:[...(d.source.match(datePattern)||[]),...(d.source.match(durationPattern)||[])],
+          condition:d.source.match(/\b(?:if|unless|provided that|after|upon|when|subject to|basis registration count)\b[\s\S]*/i)?.[0]||''});
       }
     }
     const groups=new Map<string,Obligation[]>();
