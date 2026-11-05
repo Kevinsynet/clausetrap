@@ -1,0 +1,30 @@
+SERVICES AGREEMENT
+Demonstration only. Fictional parties and deliberately inconsistent terms.
+1. Parties
+This agreement is between Acme Ltd (Client) and Northstar Studio (Supplier).
+2. Delivery
+Supplier shall deliver the final report within 30 days after receipt of the brief.
+3. Delivery schedule
+Supplier shall deliver the final report within 45 days after receipt of the brief.
+4. Service fee
+Client shall pay USD 5,000 for the final report within 15 days after acceptance.
+5. Fee schedule
+Client shall pay USD 7,500 for the final report within 15 days after acceptance.
+6. Confidentiality
+Supplier shall not disclose the confidential report to third parties.
+7. Distribution
+Supplier shall disclose the confidential report to third parties.
+8. Review
+Client shall review the draft within 7 days after receipt.
+9. Termination
+Client may terminate this agreement on 30 days written notice if Supplier materially breaches it.
+10. Late payment penalty
+Client shall pay a late fee of USD 50 if an invoice remains unpaid for 30 days.
+11. Milestone
+Supplier shall deliver the prototype by December 15, 2026.
+12. Separate delivery
+Supplier shall deliver the training manual within 60 days after receipt of the brief.
+13. Conditional exception
+Supplier shall deliver the final report within 60 days if Client requests additional research.
+14. Governing terms
+The parties intend this document to be a fictional research example. No order of precedence is defined.

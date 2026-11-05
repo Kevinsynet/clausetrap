@@ -1,0 +1,551 @@
+{
+  "filename": "sample-contract.pdf",
+  "pages": 2,
+  "clauses": [
+    {
+      "id": "C001",
+      "reference": "Preamble",
+      "pages": [
+        1
+      ],
+      "text": "SERVICES AGREEMENT\nDemonstration only. Fictional parties and deliberately inconsistent terms.",
+      "category": "other",
+      "entities": {
+        "amounts": [],
+        "dates": [],
+        "durations": [],
+        "parties": []
+      }
+    },
+    {
+      "id": "C002",
+      "reference": "1",
+      "pages": [
+        1
+      ],
+      "text": "Parties\nThis agreement is between Acme Ltd (Client) and Northstar Studio (Supplier).",
+      "category": "other",
+      "entities": {
+        "amounts": [],
+        "dates": [],
+        "durations": [],
+        "parties": [
+          "Acme Ltd (Client",
+          "Northstar Studio"
+        ]
+      }
+    },
+    {
+      "id": "C003",
+      "reference": "2",
+      "pages": [
+        1
+      ],
+      "text": "Delivery\nSupplier shall deliver the final report within 30 days after receipt of the brief.",
+      "category": "obligation",
+      "entities": {
+        "amounts": [],
+        "dates": [
+          "30 days"
+        ],
+        "durations": [
+          "30 days"
+        ],
+        "parties": [
+          "Supplier"
+        ]
+      }
+    },
+    {
+      "id": "C004",
+      "reference": "3",
+      "pages": [
+        1
+      ],
+      "text": "Delivery schedule\nSupplier shall deliver the final report within 45 days after receipt of the brief.",
+      "category": "obligation",
+      "entities": {
+        "amounts": [],
+        "dates": [
+          "45 days"
+        ],
+        "durations": [
+          "45 days"
+        ],
+        "parties": [
+          "Supplier"
+        ]
+      }
+    },
+    {
+      "id": "C005",
+      "reference": "4",
+      "pages": [
+        1
+      ],
+      "text": "Service fee\nClient shall pay USD 5,000 for the final report within 15 days after acceptance.",
+      "category": "payment",
+      "entities": {
+        "amounts": [
+          "USD 5,000"
+        ],
+        "dates": [
+          "15 days"
+        ],
+        "durations": [
+          "15 days"
+        ],
+        "parties": [
+          "Client"
+        ]
+      }
+    },
+    {
+      "id": "C006",
+      "reference": "5",
+      "pages": [
+        1
+      ],
+      "text": "Fee schedule\nClient shall pay USD 7,500 for the final report within 15 days after acceptance.",
+      "category": "payment",
+      "entities": {
+        "amounts": [
+          "USD 7,500"
+        ],
+        "dates": [
+          "15 days"
+        ],
+        "durations": [
+          "15 days"
+        ],
+        "parties": [
+          "Client"
+        ]
+      }
+    },
+    {
+      "id": "C007",
+      "reference": "6",
+      "pages": [
+        1
+      ],
+      "text": "Confidentiality\nSupplier shall not disclose the confidential report to third parties.",
+      "category": "confidentiality",
+      "entities": {
+        "amounts": [],
+        "dates": [],
+        "durations": [],
+        "parties": [
+          "Supplier"
+        ]
+      }
+    },
+    {
+      "id": "C008",
+      "reference": "7",
+      "pages": [
+        1
+      ],
+      "text": "Distribution\nSupplier shall disclose the confidential report to third parties.",
+      "category": "confidentiality",
+      "entities": {
+        "amounts": [],
+        "dates": [],
+        "durations": [],
+        "parties": [
+          "Supplier"
+        ]
+      }
+    },
+    {
+      "id": "C009",
+      "reference": "8",
+      "pages": [
+        1
+      ],
+      "text": "Review\nClient shall review the draft within 7 days after receipt.\nClauseTrap demonstration | Page 1",
+      "category": "obligation",
+      "entities": {
+        "amounts": [],
+        "dates": [
+          "7 days"
+        ],
+        "durations": [
+          "7 days"
+        ],
+        "parties": [
+          "ClauseTrap",
+          "Client"
+        ]
+      }
+    },
+    {
+      "id": "C010",
+      "reference": "9",
+      "pages": [
+        2
+      ],
+      "text": "Termination\nClient may terminate this agreement on 30 days written notice if Supplier materially breaches it.",
+      "category": "termination",
+      "entities": {
+        "amounts": [],
+        "dates": [
+          "30 days"
+        ],
+        "durations": [
+          "30 days"
+        ],
+        "parties": [
+          "Supplier"
+        ]
+      }
+    },
+    {
+      "id": "C011",
+      "reference": "10",
+      "pages": [
+        2
+      ],
+      "text": "Late payment penalty\nClient shall pay a late fee of USD 50 if an invoice remains unpaid for 30 days.",
+      "category": "penalty",
+      "entities": {
+        "amounts": [
+          "USD 50"
+        ],
+        "dates": [
+          "30 days"
+        ],
+        "durations": [
+          "30 days"
+        ],
+        "parties": [
+          "Client"
+        ]
+      }
+    },
+    {
+      "id": "C012",
+      "reference": "11",
+      "pages": [
+        2
+      ],
+      "text": "Milestone\nSupplier shall deliver the prototype by December 15, 2026.",
+      "category": "obligation",
+      "entities": {
+        "amounts": [],
+        "dates": [
+          "December 15, 2026"
+        ],
+        "durations": [],
+        "parties": [
+          "Supplier"
+        ]
+      }
+    },
+    {
+      "id": "C013",
+      "reference": "12",
+      "pages": [
+        2
+      ],
+      "text": "Separate delivery\nSupplier shall deliver the training manual within 60 days after receipt of the brief.",
+      "category": "obligation",
+      "entities": {
+        "amounts": [],
+        "dates": [
+          "60 days"
+        ],
+        "durations": [
+          "60 days"
+        ],
+        "parties": [
+          "Supplier"
+        ]
+      }
+    },
+    {
+      "id": "C014",
+      "reference": "13",
+      "pages": [
+        2
+      ],
+      "text": "Conditional exception\nSupplier shall deliver the final report within 60 days if Client requests additional research.",
+      "category": "obligation",
+      "entities": {
+        "amounts": [],
+        "dates": [
+          "60 days"
+        ],
+        "durations": [
+          "60 days"
+        ],
+        "parties": [
+          "Supplier"
+        ]
+      }
+    },
+    {
+      "id": "C015",
+      "reference": "14",
+      "pages": [
+        2
+      ],
+      "text": "Governing terms\nThe parties intend this document to be a fictional research example. No order of precedence is defined.\nClauseTrap demonstration | Page 2",
+      "category": "other",
+      "entities": {
+        "amounts": [],
+        "dates": [],
+        "durations": [],
+        "parties": [
+          "ClauseTrap"
+        ]
+      }
+    }
+  ],
+  "obligations": [
+    {
+      "id": "C003-O1",
+      "clause_id": "C003",
+      "actor": "Supplier",
+      "action": "deliver",
+      "object": "the final report within 30 days after receipt of the brief.",
+      "deadline": [
+        "30 days"
+      ],
+      "condition": "after receipt of the brief",
+      "polarity": "required",
+      "source": "Delivery\nSupplier shall deliver the final report within 30 days after receipt of the brief.",
+      "pages": [
+        1
+      ]
+    },
+    {
+      "id": "C004-O1",
+      "clause_id": "C004",
+      "actor": "Supplier",
+      "action": "deliver",
+      "object": "the final report within 45 days after receipt of the brief.",
+      "deadline": [
+        "45 days"
+      ],
+      "condition": "after receipt of the brief",
+      "polarity": "required",
+      "source": "Delivery schedule\nSupplier shall deliver the final report within 45 days after receipt of the brief.",
+      "pages": [
+        1
+      ]
+    },
+    {
+      "id": "C005-O1",
+      "clause_id": "C005",
+      "actor": "Client",
+      "action": "pay",
+      "object": "USD 5,000 for the final report within 15 days after acceptance.",
+      "deadline": [
+        "15 days"
+      ],
+      "condition": "after acceptance",
+      "polarity": "required",
+      "source": "Service fee\nClient shall pay USD 5,000 for the final report within 15 days after acceptance.",
+      "pages": [
+        1
+      ]
+    },
+    {
+      "id": "C006-O1",
+      "clause_id": "C006",
+      "actor": "Client",
+      "action": "pay",
+      "object": "USD 7,500 for the final report within 15 days after acceptance.",
+      "deadline": [
+        "15 days"
+      ],
+      "condition": "after acceptance",
+      "polarity": "required",
+      "source": "Fee schedule\nClient shall pay USD 7,500 for the final report within 15 days after acceptance.",
+      "pages": [
+        1
+      ]
+    },
+    {
+      "id": "C007-O1",
+      "clause_id": "C007",
+      "actor": "Supplier",
+      "action": "disclose",
+      "object": "the confidential report to third parties.",
+      "deadline": [],
+      "condition": "",
+      "polarity": "prohibited",
+      "source": "Confidentiality\nSupplier shall not disclose the confidential report to third parties.",
+      "pages": [
+        1
+      ]
+    },
+    {
+      "id": "C008-O1",
+      "clause_id": "C008",
+      "actor": "Supplier",
+      "action": "disclose",
+      "object": "the confidential report to third parties.",
+      "deadline": [],
+      "condition": "",
+      "polarity": "required",
+      "source": "Distribution\nSupplier shall disclose the confidential report to third parties.",
+      "pages": [
+        1
+      ]
+    },
+    {
+      "id": "C009-O1",
+      "clause_id": "C009",
+      "actor": "Client",
+      "action": "review",
+      "object": "the draft within 7 days after receipt.",
+      "deadline": [
+        "7 days"
+      ],
+      "condition": "after receipt",
+      "polarity": "required",
+      "source": "Review\nClient shall review the draft within 7 days after receipt.",
+      "pages": [
+        1
+      ]
+    },
+    {
+      "id": "C011-O1",
+      "clause_id": "C011",
+      "actor": "Client",
+      "action": "pay",
+      "object": "a late fee of USD 50 if an invoice remains unpaid for 30 days.",
+      "deadline": [
+        "30 days"
+      ],
+      "condition": "if an invoice remains unpaid for 30 days",
+      "polarity": "required",
+      "source": "Late payment penalty\nClient shall pay a late fee of USD 50 if an invoice remains unpaid for 30 days.",
+      "pages": [
+        2
+      ]
+    },
+    {
+      "id": "C012-O1",
+      "clause_id": "C012",
+      "actor": "Supplier",
+      "action": "deliver",
+      "object": "the prototype by December 15, 2026.",
+      "deadline": [
+        "December 15, 2026"
+      ],
+      "condition": "",
+      "polarity": "required",
+      "source": "Milestone\nSupplier shall deliver the prototype by December 15, 2026.",
+      "pages": [
+        2
+      ]
+    },
+    {
+      "id": "C013-O1",
+      "clause_id": "C013",
+      "actor": "Supplier",
+      "action": "deliver",
+      "object": "the training manual within 60 days after receipt of the brief.",
+      "deadline": [
+        "60 days"
+      ],
+      "condition": "after receipt of the brief",
+      "polarity": "required",
+      "source": "Separate delivery\nSupplier shall deliver the training manual within 60 days after receipt of the brief.",
+      "pages": [
+        2
+      ]
+    },
+    {
+      "id": "C014-O1",
+      "clause_id": "C014",
+      "actor": "Supplier",
+      "action": "deliver",
+      "object": "the final report within 60 days if Client requests additional research.",
+      "deadline": [
+        "60 days"
+      ],
+      "condition": "if Client requests additional research",
+      "polarity": "required",
+      "source": "Conditional exception\nSupplier shall deliver the final report within 60 days if Client requests additional research.",
+      "pages": [
+        2
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "id": "F001",
+      "clause_ids": [
+        "C003",
+        "C004"
+      ],
+      "kind": "Potential inconsistency",
+      "explanation": "Different timing terms for the same actor, action and textual scope; overlapping limits may still be compatible. Pretrained NLI flagged a possible contradiction; scope and exceptions need human verification.",
+      "evidence": [
+        "Delivery\nSupplier shall deliver the final report within 30 days after receipt of the brief.",
+        "Delivery schedule\nSupplier shall deliver the final report within 45 days after receipt of the brief."
+      ],
+      "status": "Human review required",
+      "method": "rules + NLI",
+      "scores": {
+        "contradiction": 0.9296236634254456,
+        "entailment": 0.011024045757949352,
+        "neutral": 0.05935228615999222
+      }
+    },
+    {
+      "id": "F002",
+      "clause_ids": [
+        "C005",
+        "C006"
+      ],
+      "kind": "Potential inconsistency",
+      "explanation": "Different stated amounts for the same actor, action and textual scope. Pretrained NLI flagged a possible contradiction; scope and exceptions need human verification.",
+      "evidence": [
+        "Service fee\nClient shall pay USD 5,000 for the final report within 15 days after acceptance.",
+        "Fee schedule\nClient shall pay USD 7,500 for the final report within 15 days after acceptance."
+      ],
+      "status": "Human review required",
+      "method": "rules + NLI",
+      "scores": {
+        "contradiction": 0.9965866804122925,
+        "entailment": 0.000779539521317929,
+        "neutral": 0.0026336924638599157
+      }
+    },
+    {
+      "id": "F003",
+      "clause_ids": [
+        "C007",
+        "C008"
+      ],
+      "kind": "Potential inconsistency",
+      "explanation": "One clause requires an action that the other prohibits in the same textual scope. Pretrained NLI flagged a possible contradiction; scope and exceptions need human verification.",
+      "evidence": [
+        "Confidentiality\nSupplier shall not disclose the confidential report to third parties.",
+        "Distribution\nSupplier shall disclose the confidential report to third parties."
+      ],
+      "status": "Human review required",
+      "method": "rules + NLI",
+      "scores": {
+        "contradiction": 0.9947528839111328,
+        "entailment": 0.0007385159260593355,
+        "neutral": 0.004508498590439558
+      }
+    }
+  ],
+  "methods": {
+    "classification": "Ordered keyword baseline (no confidence score)",
+    "extraction": "spaCy en_core_web_sm NER + rules",
+    "retrieval": "MiniLM sentence embeddings + shared actors",
+    "contradiction": "DeBERTa NLI + conservative rules"
+  },
+  "warnings": [
+    "NLI evaluates at most 100 retrieved, actor/action/condition-matched pairs; inputs truncate at 512 tokens. Scores are not calibrated legal probabilities.",
+    "English text PDFs only. Findings are review candidates, not legal conclusions. Unnumbered text is retained as one section."
+  ]
+}

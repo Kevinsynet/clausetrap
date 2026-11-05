@@ -1,0 +1,189 @@
+{
+  "annotation_policy": "Review=True means the pair warrants checking, including differing deadlines that may be logically compatible. Lexical paraphrases, equivalent durations and unseen modal verbs deliberately probe limitations. Written by the implementer; no expert adjudication.",
+  "classification": [
+    {
+      "text": "Supplier must maintain the equipment.",
+      "label": "obligation"
+    },
+    {
+      "text": "Buyer shall inspect the goods.",
+      "label": "obligation"
+    },
+    {
+      "text": "Vendor agrees to provide support.",
+      "label": "obligation"
+    },
+    {
+      "text": "The contractor is responsible for annual maintenance.",
+      "label": "obligation"
+    },
+    {
+      "text": "Client shall pay USD 500 for the service.",
+      "label": "payment"
+    },
+    {
+      "text": "Invoices are payable within thirty days.",
+      "label": "payment"
+    },
+    {
+      "text": "The service fee is GBP 200.",
+      "label": "payment"
+    },
+    {
+      "text": "The agreed consideration totals ten thousand dollars.",
+      "label": "payment"
+    },
+    {
+      "text": "The deadline is January 10, 2027.",
+      "label": "deadline"
+    },
+    {
+      "text": "Delivery is due no later than March 4, 2027.",
+      "label": "deadline"
+    },
+    {
+      "text": "The due date is fixed at signature.",
+      "label": "deadline"
+    },
+    {
+      "text": "Completion is expected before Friday.",
+      "label": "deadline"
+    },
+    {
+      "text": "A late fee of USD 50 applies.",
+      "label": "penalty"
+    },
+    {
+      "text": "Liquidated damages are USD 100 per day.",
+      "label": "penalty"
+    },
+    {
+      "text": "A penalty applies to missed deliveries.",
+      "label": "penalty"
+    },
+    {
+      "text": "Damages will accrue at a daily rate of USD 100.",
+      "label": "penalty"
+    },
+    {
+      "text": "Either party may terminate this agreement.",
+      "label": "termination"
+    },
+    {
+      "text": "Cancellation requires written notice.",
+      "label": "termination"
+    },
+    {
+      "text": "The parties agree to rescission.",
+      "label": "termination"
+    },
+    {
+      "text": "Either party may end the agreement by notice.",
+      "label": "termination"
+    },
+    {
+      "text": "Supplier must keep the report confidential.",
+      "label": "confidentiality"
+    },
+    {
+      "text": "Neither party may disclose trade secrets.",
+      "label": "confidentiality"
+    },
+    {
+      "text": "The non-disclosure duties survive expiration.",
+      "label": "confidentiality"
+    },
+    {
+      "text": "All proprietary information must remain private.",
+      "label": "confidentiality"
+    },
+    {
+      "text": "This agreement is governed by English law.",
+      "label": "other"
+    },
+    {
+      "text": "The registered office is in London.",
+      "label": "other"
+    },
+    {
+      "text": "Headings are for convenience only.",
+      "label": "other"
+    },
+    {
+      "text": "Payment is the title of an unrelated book mentioned in this recital.",
+      "label": "other"
+    }
+  ],
+  "pairs": [
+    {
+      "a": "Supplier shall deliver the report within 30 days after approval.",
+      "b": "Supplier shall deliver the report within 45 days after approval.",
+      "review": true
+    },
+    {
+      "a": "Client shall pay USD 500 for the report.",
+      "b": "Client shall pay USD 700 for the report.",
+      "review": true
+    },
+    {
+      "a": "Supplier shall disclose the report to customers.",
+      "b": "Supplier shall not disclose the report to customers.",
+      "review": true
+    },
+    {
+      "a": "Supplier shall deliver the report by January 10, 2027.",
+      "b": "Supplier shall deliver the report by January 20, 2027.",
+      "review": true
+    },
+    {
+      "a": "Supplier shall deliver the report within 30 days.",
+      "b": "Client shall deliver the report within 45 days.",
+      "review": false
+    },
+    {
+      "a": "Supplier shall deliver the report within 30 days.",
+      "b": "Supplier shall deliver the manual within 45 days.",
+      "review": false
+    },
+    {
+      "a": "Supplier shall deliver the report within 30 days if approved.",
+      "b": "Supplier shall deliver the report within 45 days if revised.",
+      "review": false
+    },
+    {
+      "a": "Client shall pay USD 500 for the report.",
+      "b": "Client shall pay USD 500 for the report.",
+      "review": false
+    },
+    {
+      "a": "Client shall pay USD 500 for the report.",
+      "b": "Client shall pay USD 700 for the training.",
+      "review": false
+    },
+    {
+      "a": "Vendor must keep the archive private.",
+      "b": "Vendor must publish the archive openly.",
+      "review": true
+    },
+    {
+      "a": "Supplier will provide the report in 30 days.",
+      "b": "Supplier will provide the report in 50 days.",
+      "review": true
+    },
+    {
+      "a": "Supplier shall provide the report in 4 weeks.",
+      "b": "Supplier shall provide the report in 28 days.",
+      "review": false
+    },
+    {
+      "a": "Supplier shall deliver the report within 30 days.",
+      "b": "Supplier shall deliver the report within 45 days.",
+      "review": true
+    },
+    {
+      "a": "Client shall pay USD 500 for the report if approved.",
+      "b": "Client shall pay USD 700 for the report unless approved.",
+      "review": false
+    }
+  ]
+}
