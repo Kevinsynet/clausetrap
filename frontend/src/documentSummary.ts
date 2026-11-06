@@ -36,18 +36,61 @@ function read(clause:Clause):Passage[] {
   };
   for(const line of blocks){
     if(boilerplate.test(line)){flush();continue;}
+    if(/^(?:(?:\d+(?:\.\d+)?%?\s*)+|Precision|Recall|F1-score|Metric)$/i.test(line)){flush();continue;}
+    if(/\b(?:prepared by|presented by|batch|supervisor)\b/i.test(line)){
+      flush();result.push({text:line,heading,clause,order:0});continue;
+    }
     const isHeading=line.length<=85 && !/[.!?]$/.test(line) && !duty.test(line) &&
-      (docType.test(line)||contextHeading.test(line)||(!buffer && !heading && clause.reference!=='Preamble' && blocks.length>1 && line.split(' ').length<7));
+      (/^[A-Z][A-Z &/—:–-]{5,}$/.test(line)||docType.test(line)||contextHeading.test(line)||(!buffer && !heading && clause.reference!=='Preamble' && blocks.length>1 && line.split(' ').length<7));
     if(isHeading){flush();heading=line;continue;}
     buffer+=(buffer?' ':'')+line;
-    if(/[.!?]$/.test(line))flush();
+    if(/[.!?]["”]?$/.test(line))flush();
   }
   flush();return result;
+}
+
+// Reports may quote contract clauses as examples. Use their explanatory prose
+// for the overview instead of presenting examples as the document's purpose.
+function reportSummary(data:Analysis, passages:Passage[]):SummaryLine[]|null {
+  const opening=data.clauses.map(c=>c.text).join(' ').slice(0,7000);
+  const wholeText=data.clauses.map(c=>c.text).join(' ');
+  if (!/\b(?:prototype|research|project|study)\b/i.test(opening) ||
+      !/\b(?:architecture|methodology|pipeline)\b/i.test(wholeText) ||
+      !/\b(?:evaluation|results|benchmark|limitations)\b/i.test(wholeText)) return null;
+  if (/\b(?:entered into|by and between|hereinafter referred)\b/i.test(opening)) return null;
+  const available=passages.filter(p=>!duty.test(p.text) && !/^["“]/.test(p.text) && !/^(?:\d+[.)]?|[→↓])$/.test(p.text));
+  const used=new Set<string>();
+  const rows:SummaryLine[]=[];
+  function select(label:string, pattern:RegExp, limit=2) {
+    const selected=available.filter(p=>!used.has(p.text)&&pattern.test(p.text)).slice(0,limit);
+    if(!selected.length)return;
+    selected.forEach(p=>used.add(p.text));
+    rows.push({label,text:selected.map(p=>p.text).join(' '),sources:unique(selected.map(p=>p.clause))});
+  }
+  select('What this document is about',/\b(?:prototype|system|project|study)\b.*\b(?:that|which|aims|analyzes|analyses|investigates)\b/i,1);
+  select('People and organizations',/\b(?:prepared by|presented by|author|batch|department|supervisor)\b/i,1);
+  select('Why it matters',/\b(?:challenge|manual|scattered|time pressure|difficult|problem)\b/i,2);
+  select('How it works',/\b(?:FastAPI|PDF.js|methodology|architecture)\b/i,2);
+  select('Main features',/^(?:Extract|Identify|Detect|Search)\b/i,2);
+  select('Results and evaluation',/\b(?:evaluation conducted|outperform|clauses correct|accuracy)\b/i,2);
+  select('Limitations and next steps',/\b(?:require OCR|require.*review|may miss|planned|future|multilingual|independent.*dataset)\b/i,2);
+  const title=data.clauses[0]?.text.split('\n')[0].trim();
+  if(rows[0]?.label==='What this document is about' && title && title.length<90){
+    rows[0].text='This document presents “'+title+'”. '+rows[0].text;
+    rows[0].sources=unique([data.clauses[0],...rows[0].sources]);
+  }
+  return rows.length>=2 ? rows : null;
 }
 
 export function documentSummary(data:Analysis):SummaryLine[] {
   const passages=data.clauses.flatMap(read).map((p,order)=>({...p,order}));
   if(!passages.length)return [];
+  const pageClauses:Clause[]=data.page_texts?.map(p=>({
+    id:'P'+p.page,reference:'Page '+p.page,pages:[p.page],text:p.text,category:'source text',entities:{}
+  }))||[];
+  const reportData=pageClauses.length ? {...data,clauses:pageClauses} : data;
+  const report=reportSummary(reportData,reportData.clauses.flatMap(read));
+  if(report)return report;
   const used=new Set<string>(),result:SummaryLine[]=[];
   function add(label:string,text:string,items:Passage[]){
     if(!items.length)return;

@@ -179,7 +179,7 @@ def analyze(data, filename):
     warnings.append('English text PDFs only. Findings are review candidates, not legal conclusions. Unnumbered text is retained as one section.')
     if any(len(t.strip()) < 30 for _, t in pages):
         warnings.append('Some pages contain little or no text and may require OCR.')
-    return Analysis(filename=filename, pages=len(pages), clauses=clauses, obligations=obligations,
+    return Analysis(page_texts=[{'page': p, 'text': t} for p, t in pages], filename=filename, pages=len(pages), clauses=clauses, obligations=obligations,
         findings=compare(clauses, obligations, bundle), warnings=warnings,
         methods={'classification':'Ordered keyword baseline (no confidence score)', 'extraction':ner_method,
                  'retrieval':'MiniLM sentence embeddings + shared actors' if bundle else 'TF-IDF cosine + shared actors',

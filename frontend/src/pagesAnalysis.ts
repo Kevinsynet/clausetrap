@@ -31,12 +31,14 @@ export async function analyzeInBrowser(upload?:File):Promise<Analysis> {
     const clauses:Clause[]=[];
     const obligations:Obligation[]=[];
     const findings:Finding[]=[];
+    const page_texts:{page:number;text:string}[]=[];
     let size=0;
     let activeOwner:string|undefined;
     const owners=new Map<string,string>();
     for(let page=1;page<=pdf.numPages;page++){
       const content=await (await pdf.getPage(page)).getTextContent();
       const lines=content.items.map(item=>'str' in item ? item.str+(item.hasEOL?'\n':' ') : '').join('').split('\n');
+      page_texts.push({page,text:lines.join('\n')});
       for(const raw of lines){
         const line=raw.replace(/[\u200b-\u200d\ufeff]/g,'').trim();
         if(!line)continue;
@@ -82,6 +84,6 @@ export async function analyzeInBrowser(upload?:File):Promise<Analysis> {
       f.explanation=guide.label+' differs for the same obligation: “'+guide.spans[0].term+'” versus “'+guide.spans[1].term+'”.';
       findings.push(f);
     }
-    return {filename:upload?.name||'sample-contract.pdf',pages:pdf.numPages,clauses,obligations,findings,methods:{classification:'Browser keyword rules',extraction:'PDF.js and explicit obligation patterns',contradiction:'Single-term text differences in matching obligations'},warnings:['GitHub Pages runs the browser rules baseline. The Python edition includes spaCy and optional embedding/NLI models.','Only single-obligation pairs differing in a supported term are flagged. Equivalent expressions can be flagged and paraphrases missed.','Scanned pages require OCR. Review the original PDF for completeness.']};
+    return {page_texts,filename:upload?.name||'sample-contract.pdf',pages:pdf.numPages,clauses,obligations,findings,methods:{classification:'Browser keyword rules',extraction:'PDF.js and explicit obligation patterns',contradiction:'Single-term text differences in matching obligations'},warnings:['GitHub Pages runs the browser rules baseline. The Python edition includes spaCy and optional embedding/NLI models.','Only single-obligation pairs differing in a supported term are flagged. Equivalent expressions can be flagged and paraphrases missed.','Scanned pages require OCR. Review the original PDF for completeness.']};
   } finally {await task.destroy();}
 }

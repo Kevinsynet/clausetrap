@@ -30,7 +30,12 @@ class Finding(BaseModel):
     method: str
     scores: dict[str, float] = Field(default_factory=dict)
 
+class PageText(BaseModel):
+    page: int
+    text: str
+
 class Analysis(BaseModel):
+    page_texts: list[PageText] = Field(default_factory=list)
     filename: str
     pages: int
     clauses: list[Clause]
